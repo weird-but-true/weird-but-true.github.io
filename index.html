@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>weird but true</title>
+  <meta name="description" content="One surprising fact, every day. Real, verified, impossible to believe.">
+  <meta property="og:title" content="weird but true">
+  <meta property="og:description" content="One surprising fact, every day. Real, verified, impossible to believe.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,700;0,900;1,500;1,700&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #0a0a0a;
+      --surface:  #101010;
+      --border:   #1c1c1c;
+      --text:     #f0ebe0;
+      --muted:    #484848;
+      --accent:   #f5a623;
+
+      --cat-geography-text:   #4ecdc4;
+      --cat-geography-bg:     #061e1e;
+      --cat-animals-text:     #52c788;
+      --cat-animals-bg:       #061a0f;
+      --cat-laws-text:        #b57bee;
+      --cat-laws-bg:          #150b26;
+      --cat-science-text:     #5ba4ff;
+      --cat-science-bg:       #050e1f;
+      --cat-engineering-text: #ff8c42;
+      --cat-engineering-bg:   #1e0c00;
+      --cat-food-text:        #f0c040;
+      --cat-food-bg:          #1a1600;
+      --cat-history-text:     #ff6b6b;
+      --cat-history-bg:       #1e0606;
+      --cat-psychology-text:  #ff6eb4;
+      --cat-psychology-bg:    #1e0614;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Film grain */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: -50%;
+      width: 200%;
+      height: 200%;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.038;
+      pointer-events: none;
+      z-index: 9000;
+      animation: grain 0.4s steps(3) infinite;
+    }
+
+    @keyframes grain {
+      0%   { transform: translate(0, 0); }
+      33%  { transform: translate(-1.5%, -2%); }
+      66%  { transform: translate(2%, 0.5%); }
+      100% { transform: translate(0, 0); }
+    }
+
+    /* Layout */
+    .page { min-height: 100vh; display: flex; flex-direction: column; }
+
+    .container {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── Header ── */
+    header {
+      padding: 52px 0 44px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .wordmark {
+      display: block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(72px, 17vw, 128px);
+      line-height: 0.86;
+      letter-spacing: 0.015em;
+      color: var(--text);
+    }
+
+    .wordmark .true {
+      color: var(--accent);
+    }
+
+    .header-meta {
+      margin-top: 22px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .tagline {
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .header-platforms {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .header-platforms-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #2e2e2e;
+      margin-right: 8px;
+    }
+
+    /* ── Platform links ── */
+    .platform-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+    .platform-link:hover { color: var(--accent); }
+    .platform-link svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* ── Main ── */
+    main { flex: 1; padding: 52px 0 64px; }
+
+    /* ── Empty state ── */
+    .empty {
+      padding: 72px 0 80px;
+      text-align: center;
+    }
+
+    .empty-eyebrow {
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+
+    .empty-headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 6vw, 50px);
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+
+    .empty-sub {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-bottom: 44px;
+    }
+
+    .empty-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .empty-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid var(--border);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: border-color 0.18s, color 0.18s;
+    }
+
+    .empty-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .empty-btn svg { width: 14px; height: 14px; }
+
+    /* ── Feed ── */
+    .feed { display: flex; flex-direction: column; gap: 2px; }
+
+    /* ── Card ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 28px 28px 22px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      transition: border-color 0.18s;
+    }
+
+    .card:hover { border-color: #282828; }
+
+    /* Category top stripe */
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: -1px; right: -1px;
+      height: 2px;
+    }
+
+    .card[data-cat="geography"]::before   { background: var(--cat-geography-text); }
+    .card[data-cat="animals"]::before     { background: var(--cat-animals-text); }
+    .card[data-cat="laws"]::before        { background: var(--cat-laws-text); }
+    .card[data-cat="science"]::before     { background: var(--cat-science-text); }
+    .card[data-cat="engineering"]::before { background: var(--cat-engineering-text); }
+    .card[data-cat="food"]::before        { background: var(--cat-food-text); }
+    .card[data-cat="history"]::before     { background: var(--cat-history-text); }
+    .card[data-cat="psychology"]::before  { background: var(--cat-psychology-text); }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 7px;
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+
+    .card[data-cat="geography"]   .badge { background: var(--cat-geography-bg);   color: var(--cat-geography-text); }
+    .card[data-cat="animals"]     .badge { background: var(--cat-animals-bg);     color: var(--cat-animals-text); }
+    .card[data-cat="laws"]        .badge { background: var(--cat-laws-bg);        color: var(--cat-laws-text); }
+    .card[data-cat="science"]     .badge { background: var(--cat-science-bg);     color: var(--cat-science-text); }
+    .card[data-cat="engineering"] .badge { background: var(--cat-engineering-bg); color: var(--cat-engineering-text); }
+    .card[data-cat="food"]        .badge { background: var(--cat-food-bg);        color: var(--cat-food-text); }
+    .card[data-cat="history"]     .badge { background: var(--cat-history-bg);     color: var(--cat-history-text); }
+    .card[data-cat="psychology"]  .badge { background: var(--cat-psychology-bg);  color: var(--cat-psychology-text); }
+
+    .serial {
+      font-size: 10px;
+      color: #252525;
+      letter-spacing: 0.05em;
+    }
+
+    .fact {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(19px, 3.5vw, 25px);
+      font-weight: 700;
+      line-height: 1.38;
+      color: var(--text);
+      margin-bottom: 22px;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .card-date {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .source-link {
+      font-size: 10px;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      transition: color 0.18s;
+    }
+
+    .source-link:hover { color: var(--accent); }
+
+    /* ── Footer ── */
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-copy {
+      font-size: 10px;
+      color: #282828;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-platforms { display: flex; gap: 20px; }
+
+    /* ── Mobile ── */
+    @media (max-width: 480px) {
+      header { padding: 36px 0 32px; }
+      main { padding: 36px 0 48px; }
+      .card { padding: 22px 20px 18px; }
+      .header-meta { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="container">
+      <span class="wordmark">WEIRD BUT <span class="true">TRUE</span></span>
+      <div class="header-meta">
+        <p class="tagline">One surprising fact, every day</p>
+        <div class="header-platforms">
+          <span class="header-platforms-label">Follow</span>
+          <a href="https://instagram.com/weirdbuttrueig" target="_blank" rel="noopener" class="platform-link" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div id="feed" class="feed" role="feed" aria-label="Published facts"></div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-copy">© weird-but-true</span>
+        <div class="footer-platforms">
+          <a href="https://instagram.com/weirdbuttrueig" target="_blank" rel="noopener" class="platform-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const IG_HANDLE = 'weirdbuttrueig';
+  const IG_URL = `https://instagram.com/${IG_HANDLE}`;
+
+  const IGIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>`;
+
+  function formatDate(iso) {
+    const [y, m, d] = iso.split('-').map(Number);
+    return new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  function sourceDomain(url) {
+    try { return new URL(url).hostname.replace(/^www\./, ''); }
+    catch { return 'source'; }
+  }
+
+  function renderEmpty() {
+    document.getElementById('feed').innerHTML = `
+      <div class="empty">
+        <p class="empty-eyebrow">Coming soon</p>
+        <h2 class="empty-headline">"Wait — that's actually real?"</h2>
+        <p class="empty-sub">First posts dropping soon. Follow along.</p>
+        <div class="empty-actions">
+          <a href="${IG_URL}" target="_blank" rel="noopener" class="empty-btn">
+            ${IGIcon} Instagram
+          </a>
+        </div>
+      </div>`;
+  }
+
+  function renderCard(post, serial) {
+    const cat = (post.category || 'science').toLowerCase();
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.dataset.cat = cat;
+    card.setAttribute('aria-label', post.fact);
+
+    card.innerHTML = `
+      <div class="card-top">
+        <span class="badge">${cat}</span>
+        <span class="serial">#${String(serial).padStart(3, '0')}</span>
+      </div>
+      <p class="fact">${escHtml(post.fact)}</p>
+      <div class="card-bottom">
+        <time class="card-date" datetime="${post.published}">${formatDate(post.published)}</time>
+        <div class="card-actions">
+          ${post.source ? `<a href="${escAttr(post.source)}" target="_blank" rel="noopener" class="source-link">
+            ${escHtml(sourceDomain(post.source))} ↗
+          </a>` : ''}
+        </div>
+      </div>`;
+
+    return card;
+  }
+
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
+
+  function escAttr(str) {
+    // Only allow http/https URLs
+    const s = String(str).trim();
+    return /^https?:\/\//i.test(s) ? escHtml(s) : '#';
+  }
+
+  async function init() {
+    const feed = document.getElementById('feed');
+
+    let posts = [];
+    try {
+      const res = await fetch('content/published.json');
+      if (!res.ok) throw new Error('not found');
+      posts = await res.json();
+    } catch {
+      renderEmpty();
+      return;
+    }
+
+    if (!Array.isArray(posts) || !posts.length) {
+      renderEmpty();
+      return;
+    }
+
+    // Chronological order for serial numbers, newest-first for display
+    const chrono = [...posts].sort((a, b) => a.published.localeCompare(b.published));
+    const serialMap = Object.fromEntries(chrono.map((p, i) => [p.id, i + 1]));
+    const display = [...chrono].reverse();
+
+    display.forEach((post, i) => {
+      const card = renderCard(post, serialMap[post.id] ?? i + 1);
+      card.style.animationDelay = `${i * 80}ms`;
+      feed.appendChild(card);
+    });
+  }
+
+  init();
+</script>
+</body>
+</html>
