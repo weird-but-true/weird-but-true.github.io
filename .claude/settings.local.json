@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__webmcp-agent__webmcp_get_changes",
+      "mcp__webmcp-agent__webmcp_clear_changes",
+      "WebSearch",
+      "WebFetch(domain:weird-but-true.github.io)",
+      "WebFetch(domain:www.atlasobscura.com)",
+      "WebFetch(domain:www.smithsonianmag.com)",
+      "WebFetch(domain:www.mentalfloss.com)",
+      "WebFetch(domain:www.odditycentral.com)",
+      "WebFetch(domain:www.theguardian.com)",
+      "WebFetch(domain:www.bbc.com)",
+      "WebFetch(domain:www.reddit.com)",
+      "WebFetch(domain:old.reddit.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git checkout:*)",
+      "Bash(git:*)",
+      "Bash(gh api:*)",
+      "Bash(gh pr:*)",
+      "Bash(gh issue:*)",
+      "Bash(gh run:*)",
+      "Bash(gh aw:*)",
+      "Bash(gh:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)",
+      "Bash(echo:*)",
+      "Bash(python3:*)",
+      "mcp__tavily__tavily_search",
+      "Bash(gh auth:*)",
+      "Bash(gh org:*)",
+      "Bash(git init:*)",
+      "Bash(gh repo:*)",
+      "Bash(git config:*)"
+    ]
+  }
+}
