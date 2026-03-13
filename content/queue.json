@@ -1,1 +1,104 @@
-[]
+[
+  {
+    "id": "wombat-cubes",
+    "fact": "Wombats produce cube-shaped feces that don't roll away from their scent-marked territories.",
+    "source": "https://www.aol.com/articles/animal-facts-sound-fake-actually-204628066.html",
+    "category": "animals",
+    "scores": {
+      "surprise": 5,
+      "shareability": 5,
+      "visual": 4,
+      "credibility": 5
+    },
+    "total_score": 19,
+    "visual_description": "Close-up of cube-shaped wombat droppings on rocky ground in Australian outback, showing geometric precision with warm earthy tones and clear details.",
+    "caption_a": "🟫 Nature's geometry lesson: wombats poop CUBES. Not accidentally—their intestines literally compress waste into perfect geometric shapes that don't roll away. This lets them mark territory without losing their messages to rolling rocks and rain. Australian wildlife is absolutely unhinged.\nWould you move to Australia knowing this fact?\n#animalfacts #wombat #weirdnature #australianwildlife #mindblown #nature #didyouknow #facts",
+    "caption_b": "🐨 Wait—wombat poop is SQUARE??? Yes. Their unique digestive system creates cube-shaped feces that stay put on rocks. It's nature's perfect engineering hack. Scent marking that actually works in the Australian outback. Tag someone who needs to know this.\n#wildlifefacts #wombat #nature #science #australia #animalfacts #weirdbutrue #discovery",
+    "discovered": "2026-03-13"
+  },
+  {
+    "id": "mantis-punch",
+    "fact": "Mantis shrimp punch so fast it creates collapsing water bubbles that emit light energy.",
+    "source": "https://www.aol.com/articles/animal-facts-sound-fake-actually-204628066.html",
+    "category": "animals",
+    "scores": {
+      "surprise": 5,
+      "shareability": 4,
+      "visual": 5,
+      "credibility": 5
+    },
+    "total_score": 19,
+    "visual_description": "Underwater mantis shrimp mid-punch with bubble collapse creating bioluminescent flash, dark blue water background, moment of impact with light burst.",
+    "caption_a": "💥 This shrimp packs a punch so powerful it creates LIGHT. Mantis shrimp strike moves faster than bullets, collapsing water bubbles that flash with actual light energy. They're not just hunting prey—they're literally creating underwater lightning with their fists. Nature's nuclear weapons facility right there.\nWhich animal power would you want?\n#mantisshrimp #ocean #animals #science #mindblown #facts #wildlife #didyouknow",
+    "caption_b": "🌊 The mantis shrimp has entered the chat. Its punch moves so fast it creates cavitation bubbles that COLLAPSE and emit LIGHT when they burst. This deep-sea fighter is literally punching with lightning. Absolutely terrifying.\nWhat's the scariest animal fact you know?\n#ocean #animals #facts #weirdnature #science #mantisshrimp #animalfacts #nature",
+    "discovered": "2026-03-13"
+  },
+  {
+    "id": "croissants-austria",
+    "fact": "Croissants, iconic to French baking culture, were actually invented in Vienna, Austria.",
+    "source": "https://www.afoodieworld.com/blog/2022/02/09/10-surprising-food-origins/",
+    "category": "food",
+    "scores": {
+      "surprise": 4,
+      "shareability": 5,
+      "visual": 5,
+      "credibility": 5
+    },
+    "total_score": 19,
+    "visual_description": "Golden croissants arranged in a French bakery style with Vienna pastry heritage background, warm morning light, fresh pastries, aesthetic food photography.",
+    "caption_a": "🥐 Everything's a lie. Croissants—the SOUL of French baking culture—didn't come from France. They were invented in Vienna, Austria. The kipferl, a crescent pastry from monastery bakeries, was perfected by Austrian bakers centuries before the French claimed the trademark.\nWhat's a food you've been wrong about?\n#croissant #france #austria #foodfacts #history #bakery #didyouknow #mindblown",
+    "caption_b": "🇦🇹 Plot twist: croissants aren't French. They're Austrian. The French just got really, REALLY good at making them and convinced the world they invented them. This is food history's greatest heist. Vienna's gift to the world that France claimed as their own.\nTag a croissant lover who needs to know this truth.\n#food #history #croissant #france #austria #facts #animalfacts #weirdbutrue",
+    "discovered": "2026-03-13"
+  },
+  {
+    "id": "fish-chips-portugal",
+    "fact": "Fish and chips, quintessentially British, actually originated in Portugal.",
+    "source": "https://www.afoodieworld.com/blog/2022/02/09/10-surprising-food-origins/",
+    "category": "food",
+    "scores": {
+      "surprise": 4,
+      "shareability": 5,
+      "visual": 5,
+      "credibility": 5
+    },
+    "total_score": 19,
+    "visual_description": "Traditional Portuguese fish and chips vendor with golden fried fish, crispy fries, Portuguese coastal setting or historic Porto district background.",
+    "caption_a": "🇵🇹 The British invented fish and chips? WRONG. Portugal did it first. Portuguese immigrants brought their fried fish tradition to England, where it met potato chips. The result: the dish that defined British seaside culture. Irony level: maximum.\nWhat's another \"iconic\" food that's not from where you think?\n#fishchips #portugal #britain #foodfacts #history #didyouknow #mindblown #food",
+    "caption_b": "🍟 Breaking: Fish and chips isn't British. It's Portuguese. British cuisine literally borrowed another country's dish, added potatoes, and convinced the world they invented comfort food. This is the most British thing ever—adopting something and pretending it's theirs.\n#food #history #portugal #britain #fishchips #facts #weirdbutrue #foodie",
+    "discovered": "2026-03-13"
+  },
+  {
+    "id": "platypus-uv",
+    "fact": "Platypuses glow blue-green under UV light due to biofluorescence in their fur.",
+    "source": "https://www.aol.com/articles/animal-facts-sound-fake-actually-204628066.html",
+    "category": "animals",
+    "scores": {
+      "surprise": 4,
+      "shareability": 4,
+      "visual": 5,
+      "credibility": 5
+    },
+    "total_score": 18,
+    "visual_description": "Platypus glowing blue-green under ultraviolet light against dark background, surreal biofluorescence effect, underwater or river setting, mystical glow.",
+    "caption_a": "🦆 Platypuses glow in the dark. Literally. Under UV light, their fur shines blue-green with biofluorescence—a trait scientists discovered BY ACCIDENT while examining museum specimens. Scientists think it helps them hunt in dim river light. Nature's stealth mode on an already-weird animal.\nWhat's something in nature that would look insane under UV light?\n#platypus #animals #science #nature #facts #australia #weirdnature #mindblown",
+    "caption_b": "🌙 Your platypus trivia is about to level up: they GLOW under UV light. Their fur reflects blue-green biofluorescence that helps them navigate low-light rivers. Australia's animals are just living in a different dimension than the rest of us.\n#platypus #australia #animals #nature #science #facts #weirdbutrue #didyouknow",
+    "discovered": "2026-03-13"
+  },
+  {
+    "id": "corned-beef-ny",
+    "fact": "Corned beef and cabbage, associated with Ireland, was invented in New York by Irish immigrants.",
+    "source": "https://www.tasteofhome.com/collection/dishes-with-unexpected-origins/",
+    "category": "food",
+    "scores": {
+      "surprise": 4,
+      "shareability": 5,
+      "visual": 4,
+      "credibility": 5
+    },
+    "total_score": 18,
+    "visual_description": "Classic NYC Jewish deli scene with pastrami/corned beef counter, Irish-American neighborhood backdrop, multi-cultural food intersection, vintage NYC setting.",
+    "caption_a": "🇮🇪 Corned beef and cabbage isn't Irish. It's 100% New York. Irish immigrants arrived in NYC, discovered corned beef at Jewish delis, paired it with cheap cabbage, and created their \"national dish.\" Ireland doesn't even eat this combo. This is pure Irish-American invention.\nWhat's a \"traditional\" dish that's way more recent than you thought?\n#cornedbeef #ireland #newyork #food #history #Irish #foodfacts #mindblown",
+    "caption_b": "🗽 This hits different: \"corned beef and cabbage\" is FAKE IRISH HISTORY. Irish immigrants invented it in New York by mixing Jewish deli corned beef with their cheap cabbage. Ireland has no idea why Americans claim this is their national dish. It's pure NYC energy.\n#food #history #newyork #ireland #foodfacts #weirdbutrue #facts #didyouknow",
+    "discovered": "2026-03-13"
+  }
+]
