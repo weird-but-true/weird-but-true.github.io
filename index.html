@@ -319,6 +319,62 @@
 
     .source-link:hover { color: var(--accent); }
 
+    /* ── Queued card variant ── */
+    .card.queued {
+      border-style: dashed;
+      background: #0c0c0c;
+    }
+
+    .queued-badge {
+      display: inline-block;
+      padding: 3px 7px;
+      font-size: 8px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      background: #1a1500;
+      color: var(--accent);
+      margin-left: 8px;
+    }
+
+    .card.queued .serial { color: #1e1e1e; }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 9px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: #2e2e2e;
+      padding: 32px 0 12px;
+    }
+
+    .section-label:first-child { padding-top: 0; }
+
+    /* ── Auth controls ── */
+    .auth-btn {
+      background: none;
+      border: none;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #2e2e2e;
+      cursor: pointer;
+      padding: 0;
+      transition: color 0.18s;
+    }
+
+    .auth-btn:hover { color: var(--muted); }
+
+    .auth-avatar {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 4px;
+      opacity: 0.5;
+    }
+
     /* ── Footer ── */
     footer {
       padding: 28px 0;
@@ -383,6 +439,7 @@
     <div class="container">
       <div class="footer-inner">
         <span class="footer-copy">© weird-but-true</span>
+        <span id="auth-area"></span>
         <div class="footer-platforms">
           <a href="https://instagram.com/weirdbuttrueig" target="_blank" rel="noopener" class="platform-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -399,11 +456,73 @@
 
 </div>
 
-<script>
+<script type="module">
+  import { connectGitHub } from 'https://neevs.io/auth/connect.js';
+
+  const REPO = 'weird-but-true/weird-but-true.github.io';
+  const AUTH_KEY = 'wbt-auth';
   const IG_HANDLE = 'weirdbuttrueig';
   const IG_URL = `https://instagram.com/${IG_HANDLE}`;
-
   const IGIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>`;
+
+  // ── Auth ──
+
+  function getAuth() {
+    try { return JSON.parse(localStorage.getItem(AUTH_KEY)); }
+    catch { return null; }
+  }
+
+  function clearAuth() { localStorage.removeItem(AUTH_KEY); }
+
+  async function validateToken(token) {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${REPO}`, {
+        headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+      });
+      return res.ok;
+    } catch { return false; }
+  }
+
+  async function tryAuth() {
+    const stored = getAuth();
+    if (!stored?.token) return null;
+    if (await validateToken(stored.token)) return stored;
+    clearAuth();
+    return null;
+  }
+
+  async function login() {
+    try {
+      const result = await connectGitHub('repo', 'weird-but-true');
+      if (!result?.token) return null;
+      if (await validateToken(result.token)) {
+        localStorage.setItem(AUTH_KEY, JSON.stringify(result));
+        location.reload();
+        return result;
+      }
+    } catch { /* user cancelled or error */ }
+    return null;
+  }
+
+  function logout() {
+    clearAuth();
+    location.reload();
+  }
+
+  function renderAuthArea(auth) {
+    const area = document.getElementById('auth-area');
+    if (auth) {
+      area.innerHTML = `<button class="auth-btn" id="logout-btn">
+        ${auth.avatarUrl ? `<img src="${escAttr(auth.avatarUrl)}" class="auth-avatar" alt="">` : ''}sign out
+      </button>`;
+      area.querySelector('#logout-btn').addEventListener('click', logout);
+    } else {
+      area.innerHTML = `<button class="auth-btn" id="login-btn">sign in</button>`;
+      area.querySelector('#login-btn').addEventListener('click', login);
+    }
+  }
+
+  // ── Helpers ──
 
   function formatDate(iso) {
     const [y, m, d] = iso.split('-').map(Number);
@@ -415,6 +534,48 @@
     catch { return 'source'; }
   }
 
+  function escHtml(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function escAttr(str) {
+    const s = String(str).trim();
+    return /^https?:\/\//i.test(s) ? escHtml(s) : '#';
+  }
+
+  // ── Cards ──
+
+  function renderCard(post, serial, { queued = false } = {}) {
+    const cat = (post.category || 'science').toLowerCase();
+    const card = document.createElement('article');
+    card.className = queued ? 'card queued' : 'card';
+    card.dataset.cat = cat;
+    card.setAttribute('aria-label', post.fact);
+
+    const dateField = queued
+      ? `<span class="card-date">discovered ${formatDate(post.discovered)}</span>`
+      : `<time class="card-date" datetime="${post.published}">${formatDate(post.published)}</time>`;
+
+    const scoreBadge = queued && post.total_score
+      ? `<span class="queued-badge">${post.total_score}/20</span>`
+      : '';
+
+    card.innerHTML = `
+      <div class="card-top">
+        <span><span class="badge">${cat}</span>${scoreBadge}</span>
+        <span class="serial">#${String(serial).padStart(3, '0')}</span>
+      </div>
+      <p class="fact">${escHtml(post.fact)}</p>
+      <div class="card-bottom">
+        ${dateField}
+        <div class="card-actions">
+          ${post.source ? `<a href="${escAttr(post.source)}" target="_blank" rel="noopener" class="source-link">${escHtml(sourceDomain(post.source))} ↗</a>` : ''}
+        </div>
+      </div>`;
+
+    return card;
+  }
+
   function renderEmpty() {
     document.getElementById('feed').innerHTML = `
       <div class="empty">
@@ -422,80 +583,76 @@
         <h2 class="empty-headline">"Wait — that's actually real?"</h2>
         <p class="empty-sub">First posts dropping soon. Follow along.</p>
         <div class="empty-actions">
-          <a href="${IG_URL}" target="_blank" rel="noopener" class="empty-btn">
-            ${IGIcon} Instagram
-          </a>
+          <a href="${IG_URL}" target="_blank" rel="noopener" class="empty-btn">${IGIcon} Instagram</a>
         </div>
       </div>`;
   }
 
-  function renderCard(post, serial) {
-    const cat = (post.category || 'science').toLowerCase();
-    const card = document.createElement('article');
-    card.className = 'card';
-    card.dataset.cat = cat;
-    card.setAttribute('aria-label', post.fact);
+  // ── Feed ──
 
-    card.innerHTML = `
-      <div class="card-top">
-        <span class="badge">${cat}</span>
-        <span class="serial">#${String(serial).padStart(3, '0')}</span>
-      </div>
-      <p class="fact">${escHtml(post.fact)}</p>
-      <div class="card-bottom">
-        <time class="card-date" datetime="${post.published}">${formatDate(post.published)}</time>
-        <div class="card-actions">
-          ${post.source ? `<a href="${escAttr(post.source)}" target="_blank" rel="noopener" class="source-link">
-            ${escHtml(sourceDomain(post.source))} ↗
-          </a>` : ''}
-        </div>
-      </div>`;
-
-    return card;
-  }
-
-  function escHtml(str) {
-    return String(str)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;');
-  }
-
-  function escAttr(str) {
-    // Only allow http/https URLs
-    const s = String(str).trim();
-    return /^https?:\/\//i.test(s) ? escHtml(s) : '#';
+  async function fetchJSON(path) {
+    try {
+      const res = await fetch(path);
+      if (!res.ok) return [];
+      return await res.json();
+    } catch { return []; }
   }
 
   async function init() {
+    const auth = await tryAuth();
+    renderAuthArea(auth);
+
     const feed = document.getElementById('feed');
+    const published = await fetchJSON('content/published.json');
+    const queue = auth ? await fetchJSON('content/queue.json') : [];
 
-    let posts = [];
-    try {
-      const res = await fetch('content/published.json');
-      if (!res.ok) throw new Error('not found');
-      posts = await res.json();
-    } catch {
+    if (!published.length && !queue.length) {
       renderEmpty();
       return;
     }
 
-    if (!Array.isArray(posts) || !posts.length) {
-      renderEmpty();
-      return;
+    let serial = 1;
+    let delay = 0;
+
+    // Published posts (newest first)
+    if (published.length) {
+      const chrono = [...published].sort((a, b) => a.published.localeCompare(b.published));
+      const serialMap = Object.fromEntries(chrono.map((p, i) => [p.id, i + 1]));
+      const display = [...chrono].reverse();
+
+      if (queue.length) {
+        const label = document.createElement('p');
+        label.className = 'section-label';
+        label.textContent = 'Published';
+        feed.appendChild(label);
+      }
+
+      display.forEach((post, i) => {
+        const card = renderCard(post, serialMap[post.id] ?? i + 1);
+        card.style.animationDelay = `${delay}ms`;
+        delay += 80;
+        feed.appendChild(card);
+      });
+
+      serial = chrono.length + 1;
     }
 
-    // Chronological order for serial numbers, newest-first for display
-    const chrono = [...posts].sort((a, b) => a.published.localeCompare(b.published));
-    const serialMap = Object.fromEntries(chrono.map((p, i) => [p.id, i + 1]));
-    const display = [...chrono].reverse();
+    // Queued posts (authenticated only, newest discovered first)
+    if (queue.length) {
+      const label = document.createElement('p');
+      label.className = 'section-label';
+      label.textContent = `Queue (${queue.length})`;
+      feed.appendChild(label);
 
-    display.forEach((post, i) => {
-      const card = renderCard(post, serialMap[post.id] ?? i + 1);
-      card.style.animationDelay = `${i * 80}ms`;
-      feed.appendChild(card);
-    });
+      const sorted = [...queue].sort((a, b) => (b.discovered || '').localeCompare(a.discovered || ''));
+
+      sorted.forEach((post, i) => {
+        const card = renderCard(post, serial + i, { queued: true });
+        card.style.animationDelay = `${delay}ms`;
+        delay += 80;
+        feed.appendChild(card);
+      });
+    }
   }
 
   init();
