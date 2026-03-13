@@ -40,3 +40,27 @@ Rate each idea 1-5 on each dimension:
 - Visual potential (1-5)
 - Source credibility (1-5)
 Min score to queue: 14/20
+
+## Post Image Design
+
+Posts use branded text cards, not stock photos or AI-generated images.
+The fact text IS the visual. Nothing competes with it.
+
+Format: 1080x1350px (4:5 Instagram ratio)
+
+| Element | Treatment |
+|---------|-----------|
+| Background | #0a0a0a with subtle film grain |
+| Category stripe | 6px bar at top in category hue |
+| Category badge | Small caps, category color, top-left |
+| Fact text | Playfair Display 700, ~62px, centered vertically, off-white (#f0ebe0) |
+| Source | Domain name only, small mono, bottom-left, muted |
+| Wordmark | "WEIRD BUT TRUE" in Bebas Neue, bottom-right, near-invisible (#1c1c1c) |
+
+Every visual property encodes something:
+- Hue = category membership
+- Size = hierarchy (fact > everything else)
+- Weight = prominence
+- Grain = brand texture (matches website)
+
+Use `/tools/post-generator.html` to render and download PNGs from the queue.

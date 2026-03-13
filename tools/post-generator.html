@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Generator — weird but true</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:wght@700;900&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --surface: #111;
+      --border: #1c1c1c;
+      --text: #f0ebe0;
+      --muted: #484848;
+      --accent: #f5a623;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      -webkit-font-smoothing: antialiased;
+      padding: 40px 20px;
+    }
+
+    .auth-gate {
+      text-align: center;
+      padding: 120px 20px;
+    }
+
+    .auth-gate h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+
+    .auth-gate p {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+
+    .auth-gate button {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      cursor: pointer;
+      transition: border-color 0.18s, color 0.18s;
+    }
+
+    .auth-gate button:hover { border-color: var(--accent); color: var(--accent); }
+
+    .header {
+      max-width: 900px;
+      margin: 0 auto 40px;
+    }
+
+    .header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.05em;
+    }
+
+    .header p {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      margin-top: 8px;
+    }
+
+    .grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .post-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 16px;
+    }
+
+    .post-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .post-meta span {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .post-canvas-wrap {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .post-canvas-wrap canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .post-actions button {
+      flex: 1;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 9px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 8px;
+      cursor: pointer;
+      transition: border-color 0.18s, color 0.18s;
+    }
+
+    .post-actions button:hover { border-color: var(--accent); color: var(--accent); }
+
+    .caption-box {
+      margin-top: 12px;
+      display: none;
+    }
+
+    .caption-box.visible { display: block; }
+
+    .caption-tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 0;
+    }
+
+    .caption-tab {
+      flex: 1;
+      background: none;
+      border: 1px solid var(--border);
+      border-bottom: none;
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px;
+      cursor: pointer;
+      transition: color 0.18s;
+    }
+
+    .caption-tab.active { color: var(--accent); background: #0e0e0e; }
+
+    .caption-text {
+      border: 1px solid var(--border);
+      background: #0e0e0e;
+      padding: 12px;
+      font-size: 11px;
+      line-height: 1.6;
+      color: #999;
+      white-space: pre-wrap;
+      max-height: 200px;
+      overflow-y: auto;
+    }
+
+    .copy-caption {
+      margin-top: 6px;
+      width: 100%;
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 8px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 6px;
+      cursor: pointer;
+      transition: border-color 0.18s, color 0.18s;
+    }
+
+    .copy-caption:hover { border-color: var(--accent); color: var(--accent); }
+  </style>
+</head>
+<body>
+
+<div id="app"></div>
+
+<script type="module">
+  import { connectGitHub } from 'https://neevs.io/auth/connect.js';
+
+  const REPO = 'weird-but-true/weird-but-true.github.io';
+  const AUTH_KEY = 'wbt-auth';
+
+  // Post dimensions (4:5 Instagram)
+  const W = 1080;
+  const H = 1350;
+
+  // Category colors
+  const CAT_COLORS = {
+    geography:   { text: '#4ecdc4', stripe: '#4ecdc4' },
+    animals:     { text: '#52c788', stripe: '#52c788' },
+    laws:        { text: '#b57bee', stripe: '#b57bee' },
+    science:     { text: '#5ba4ff', stripe: '#5ba4ff' },
+    engineering: { text: '#ff8c42', stripe: '#ff8c42' },
+    food:        { text: '#f0c040', stripe: '#f0c040' },
+    history:     { text: '#ff6b6b', stripe: '#ff6b6b' },
+    psychology:  { text: '#ff6eb4', stripe: '#ff6eb4' },
+  };
+
+  // ── Auth ──
+
+  function getAuth() {
+    try { return JSON.parse(localStorage.getItem(AUTH_KEY)); } catch { return null; }
+  }
+
+  async function validateToken(token) {
+    try {
+      const res = await fetch(`https://api.github.com/repos/${REPO}`, {
+        headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+      });
+      return res.ok;
+    } catch { return false; }
+  }
+
+  async function tryAuth() {
+    const stored = getAuth();
+    if (!stored?.token) return null;
+    if (await validateToken(stored.token)) return stored;
+    localStorage.removeItem(AUTH_KEY);
+    return null;
+  }
+
+  async function login() {
+    try {
+      const result = await connectGitHub('repo', 'weird-but-true');
+      if (result?.token && await validateToken(result.token)) {
+        localStorage.setItem(AUTH_KEY, JSON.stringify(result));
+        location.reload();
+      }
+    } catch {}
+  }
+
+  // ── Canvas rendering ──
+
+  function wrapText(ctx, text, maxWidth) {
+    const words = text.split(' ');
+    const lines = [];
+    let line = '';
+    for (const word of words) {
+      const test = line ? line + ' ' + word : word;
+      if (ctx.measureText(test).width > maxWidth && line) {
+        lines.push(line);
+        line = word;
+      } else {
+        line = test;
+      }
+    }
+    if (line) lines.push(line);
+    return lines;
+  }
+
+  function renderPost(canvas, post) {
+    const ctx = canvas.getContext('2d');
+    canvas.width = W;
+    canvas.height = H;
+    const cat = (post.category || 'science').toLowerCase();
+    const colors = CAT_COLORS[cat] || CAT_COLORS.science;
+
+    // Background
+    ctx.fillStyle = '#0a0a0a';
+    ctx.fillRect(0, 0, W, H);
+
+    // Grain texture (subtle noise)
+    const imageData = ctx.getImageData(0, 0, W, H);
+    const data = imageData.data;
+    for (let i = 0; i < data.length; i += 4) {
+      const noise = (Math.random() - 0.5) * 12;
+      data[i] += noise;
+      data[i + 1] += noise;
+      data[i + 2] += noise;
+    }
+    ctx.putImageData(imageData, 0, 0);
+
+    // Category stripe at top
+    ctx.fillStyle = colors.stripe;
+    ctx.fillRect(0, 0, W, 6);
+
+    // Category badge
+    const badgeText = cat.toUpperCase();
+    ctx.font = '400 22px "IBM Plex Mono"';
+    const badgeWidth = ctx.measureText(badgeText).width + 28;
+    const badgeX = 80;
+    const badgeY = 80;
+
+    // Badge background
+    ctx.globalAlpha = 0.15;
+    ctx.fillStyle = colors.stripe;
+    ctx.fillRect(badgeX, badgeY, badgeWidth, 34);
+    ctx.globalAlpha = 1;
+
+    // Badge text
+    ctx.fillStyle = colors.text;
+    ctx.font = '400 22px "IBM Plex Mono"';
+    ctx.letterSpacing = '4px';
+    ctx.fillText(badgeText, badgeX + 14, badgeY + 24);
+    ctx.letterSpacing = '0px';
+
+    // Fact text
+    ctx.fillStyle = '#f0ebe0';
+    ctx.font = '700 62px "Playfair Display"';
+    const lines = wrapText(ctx, post.fact, W - 160);
+
+    // Vertically center the fact text in the card
+    const lineHeight = 82;
+    const textBlockHeight = lines.length * lineHeight;
+    const textStartY = (H - textBlockHeight) / 2 + 40;
+
+    lines.forEach((line, i) => {
+      ctx.fillText(line, 80, textStartY + i * lineHeight);
+    });
+
+    // Divider line
+    const dividerY = H - 160;
+    ctx.strokeStyle = '#1c1c1c';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(80, dividerY);
+    ctx.lineTo(W - 80, dividerY);
+    ctx.stroke();
+
+    // Source domain
+    if (post.source) {
+      let domain;
+      try { domain = new URL(post.source).hostname.replace(/^www\./, ''); }
+      catch { domain = 'source'; }
+      ctx.fillStyle = '#484848';
+      ctx.font = '300 22px "IBM Plex Mono"';
+      ctx.fillText(domain, 80, dividerY + 40);
+    }
+
+    // Wordmark
+    ctx.fillStyle = '#1c1c1c';
+    ctx.font = '400 26px "Bebas Neue"';
+    ctx.textAlign = 'right';
+    ctx.fillText('WEIRD BUT TRUE', W - 80, dividerY + 40);
+    ctx.textAlign = 'left';
+  }
+
+  // ── Download ──
+
+  function downloadPost(canvas, post) {
+    const link = document.createElement('a');
+    link.download = `${post.id}.png`;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }
+
+  // ── UI ──
+
+  function renderApp(queue) {
+    const app = document.getElementById('app');
+
+    app.innerHTML = `
+      <div class="header">
+        <h1>POST GENERATOR</h1>
+        <p>${queue.length} items in queue. Click "Download" to save as 1080x1350 PNG.</p>
+      </div>
+      <div class="grid" id="grid"></div>`;
+
+    const grid = document.getElementById('grid');
+
+    queue.forEach((post, i) => {
+      const item = document.createElement('div');
+      item.className = 'post-item';
+
+      const captionA = post.caption_a || '';
+      const captionB = post.caption_b || '';
+
+      item.innerHTML = `
+        <div class="post-meta">
+          <span>${(post.category || '').toUpperCase()}</span>
+          <span>${post.total_score || '?'}/20</span>
+        </div>
+        <div class="post-canvas-wrap">
+          <canvas id="canvas-${i}"></canvas>
+        </div>
+        <div class="post-actions">
+          <button data-action="download" data-index="${i}">Download PNG</button>
+          <button data-action="caption" data-index="${i}">Captions</button>
+        </div>
+        <div class="caption-box" id="captions-${i}">
+          <div class="caption-tabs">
+            <button class="caption-tab active" data-variant="a" data-index="${i}">Caption A</button>
+            <button class="caption-tab" data-variant="b" data-index="${i}">Caption B</button>
+          </div>
+          <div class="caption-text" id="caption-text-${i}">${escHtml(captionA)}</div>
+          <button class="copy-caption" data-index="${i}">Copy to clipboard</button>
+        </div>`;
+
+      grid.appendChild(item);
+
+      // Render canvas after DOM insertion
+      requestAnimationFrame(() => {
+        const canvas = document.getElementById(`canvas-${i}`);
+        renderPost(canvas, post);
+      });
+    });
+
+    // Event delegation
+    grid.addEventListener('click', (e) => {
+      const btn = e.target.closest('button');
+      if (!btn) return;
+      const idx = parseInt(btn.dataset.index);
+
+      if (btn.dataset.action === 'download') {
+        downloadPost(document.getElementById(`canvas-${idx}`), queue[idx]);
+      }
+
+      if (btn.dataset.action === 'caption') {
+        document.getElementById(`captions-${idx}`).classList.toggle('visible');
+      }
+
+      if (btn.dataset.variant) {
+        const box = btn.closest('.caption-box');
+        box.querySelectorAll('.caption-tab').forEach(t => t.classList.remove('active'));
+        btn.classList.add('active');
+        const text = btn.dataset.variant === 'a' ? queue[idx].caption_a : queue[idx].caption_b;
+        document.getElementById(`caption-text-${idx}`).textContent = text || '';
+      }
+
+      if (btn.classList.contains('copy-caption')) {
+        const text = document.getElementById(`caption-text-${idx}`).textContent;
+        navigator.clipboard.writeText(text).then(() => {
+          btn.textContent = 'Copied';
+          setTimeout(() => { btn.textContent = 'Copy to clipboard'; }, 1500);
+        });
+      }
+    });
+  }
+
+  function renderAuthGate() {
+    document.getElementById('app').innerHTML = `
+      <div class="auth-gate">
+        <h1>POST GENERATOR</h1>
+        <p>Sign in with GitHub to access the content queue.</p>
+        <button id="login-btn">Sign in with GitHub</button>
+      </div>`;
+    document.getElementById('login-btn').addEventListener('click', login);
+  }
+
+  function escHtml(str) {
+    return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  // ── Init ──
+
+  async function init() {
+    const auth = await tryAuth();
+    if (!auth) { renderAuthGate(); return; }
+
+    let queue = [];
+    try {
+      const res = await fetch('../content/queue.json');
+      if (res.ok) queue = await res.json();
+    } catch {}
+
+    if (!queue.length) {
+      document.getElementById('app').innerHTML = `
+        <div class="auth-gate">
+          <h1>POST GENERATOR</h1>
+          <p>Queue is empty. Run content discovery first.</p>
+        </div>`;
+      return;
+    }
+
+    renderApp(queue);
+  }
+
+  init();
+</script>
+</body>
+</html>
