@@ -415,6 +415,13 @@
       <div class="header-meta">
         <p class="tagline">One surprising fact, every day</p>
         <div class="header-platforms">
+          <a href="tools/post-generator.html" class="platform-link" id="tools-link" style="display:none" aria-label="Post Generator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2"/>
+              <path d="M3 9h18M9 21V9"/>
+            </svg>
+            Generator
+          </a>
           <span class="header-platforms-label">Follow</span>
           <a href="https://instagram.com/weirdbuttrueig" target="_blank" rel="noopener" class="platform-link" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -511,7 +518,9 @@
 
   function renderAuthArea(auth) {
     const area = document.getElementById('auth-area');
+    const toolsLink = document.getElementById('tools-link');
     if (auth) {
+      if (toolsLink) toolsLink.style.display = '';
       area.innerHTML = `<button class="auth-btn" id="logout-btn">
         ${auth.avatarUrl ? `<img src="${escAttr(auth.avatarUrl)}" class="auth-avatar" alt="">` : ''}sign out
       </button>`;
