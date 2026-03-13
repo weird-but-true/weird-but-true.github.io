@@ -34,7 +34,13 @@
       "Bash(gh org:*)",
       "Bash(git init:*)",
       "Bash(gh repo:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(git remote:*)",
+      "Bash(make compile:*)",
+      "Bash(make run-discovery:*)",
+      "Bash(make help:*)",
+      "mcp__webmcp-agent__webmcp_send_message",
+      "mcp__webmcp-agent__webmcp_read_messages"
     ]
   }
 }
