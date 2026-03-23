@@ -10,5 +10,29 @@
     "source": "https://boland-injury-law.com/blog/weird-and-wacky-laws-10-bizarre-legal-regulations-from-around-the-world/",
     "reason": "Scored 16/20 - close call but this is widely known and already viral on social media",
     "checked": "2026-03-13"
+  },
+  {
+    "fact": "Chewing gum has been illegal in Singapore since 1992, with significant fines for importing or selling it",
+    "source": "https://www.sevenseasworldwide.com/need-help/weird-laws-around-the-world/",
+    "reason": "Scored only 13/20 - widely known fact, already viral on social media",
+    "checked": "2026-03-23"
+  },
+  {
+    "fact": "Sauerkraut, strongly associated with Germany, was actually invented in China",
+    "source": "https://www.tasteofhome.com/collection/dishes-with-unexpected-origins/",
+    "reason": "Scored 16/20 but too similar to existing food origin facts in queue",
+    "checked": "2026-03-23"
+  },
+  {
+    "fact": "Apple pie was actually created in England, not America",
+    "source": "https://www.tasteofhome.com/collection/dishes-with-unexpected-origins/",
+    "reason": "Scored 16/20 but insufficient surprise factor - many people already know this",
+    "checked": "2026-03-23"
+  },
+  {
+    "fact": "The US-Canada border appears straight but is actually 900 zig-zagging lines",
+    "source": "https://www.upworthy.com/united-states-canada-border-is-bizarre/",
+    "reason": "Scored 15/20 but lacks strong enough hook for viral shareability",
+    "checked": "2026-03-23"
   }
 ]
