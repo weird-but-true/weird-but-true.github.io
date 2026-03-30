@@ -100,5 +100,124 @@
     "caption_a": "🇮🇪 Corned beef and cabbage isn't Irish. It's 100% New York. Irish immigrants arrived in NYC, discovered corned beef at Jewish delis, paired it with cheap cabbage, and created their \"national dish.\" Ireland doesn't even eat this combo. This is pure Irish-American invention.\nWhat's a \"traditional\" dish that's way more recent than you thought?\n#cornedbeef #ireland #newyork #food #history #Irish #foodfacts #mindblown",
     "caption_b": "🗽 This hits different: \"corned beef and cabbage\" is FAKE IRISH HISTORY. Irish immigrants invented it in New York by mixing Jewish deli corned beef with their cheap cabbage. Ireland has no idea why Americans claim this is their national dish. It's pure NYC energy.\n#food #history #newyork #ireland #foodfacts #weirdbutrue #facts #didyouknow",
     "discovered": "2026-03-13"
+  },
+  {
+    "id": "caesar-salad-mexico",
+    "fact": "Caesar salad was invented in Tijuana, Mexico, not Italy or Rome.",
+    "source": "https://www.rd.com/list/surprising-birthplace-of-favorite-foods-and-drinks/",
+    "category": "food",
+    "scores": {
+      "surprise": 4,
+      "shareability": 5,
+      "visual": 4,
+      "credibility": 5
+    },
+    "total_score": 18,
+    "visual_description": "Vintage Caesar's Restaurant in 1920s Tijuana with classic Caesar salad preparation, prohibition-era atmosphere, Mexican-Italian fusion setting with fresh romaine and parmesan.",
+    "caption_a": "🥗 Caesar salad isn't Italian. It's MEXICAN. Italian chef Caesar Cardini invented it in 1920s Tijuana when American tourists flooded his restaurant during Prohibition. He literally threw together leftover romaine, parmesan, and croutons tableside for hungry customers. Rome had nothing to do with it.\nWhat's another \"Italian\" dish that might surprise you?\n#caesarsalad #mexico #tijuana #foodfacts #prohibition #italian #history #mindblown",
+    "caption_b": "🇲🇽 Plot twist: the king of salads was born in Mexico. Caesar Cardini created his famous salad in Tijuana, not anywhere near Rome. Prohibition drove Americans south for drinks, and this Italian chef in Mexico accidentally created what became America's most popular salad. Border town brilliance.\nTag someone who orders Caesar salad everywhere.\n#food #mexico #caesarsalad #history #foodfacts #weirdbutrue #tijuana #facts",
+    "discovered": "2026-03-30"
+  },
+  {
+    "id": "immortal-jellyfish",
+    "fact": "Turritopsis jellyfish can technically live forever by reverting to their adolescent state when stressed or injured.",
+    "source": "https://timesofindia.indiatimes.com/etimes/trending/10-weird-and-funny-animal-facts-that-sound-fake-but-are-completely-real/articleshow/125381246.cms",
+    "category": "animals",
+    "scores": {
+      "surprise": 5,
+      "shareability": 5,
+      "visual": 3,
+      "credibility": 4
+    },
+    "total_score": 17,
+    "visual_description": "Transparent immortal jellyfish Turritopsis dohrnii floating in dark blue water, glowing translucent bell shape with trailing tentacles, mystical underwater scene highlighting regeneration process.",
+    "caption_a": "🪼 This jellyfish discovered the cheat code for life: immortality. When Turritopsis dohrnii gets stressed, injured, or old, it literally reverses its aging process and becomes a juvenile again. It's like hitting reset on life. Scientists call it the immortal jellyfish, and it's the only known creature that can technically live forever.\nWhat would you do if you could restart your life at any point?\n#immortal #jellyfish #ocean #animals #science #nature #mindblown #facts",
+    "caption_b": "⏰ Meet the only immortal animal on Earth. The Turritopsis jellyfish can literally reverse aging and restart its life cycle when threatened. While we age forward, this little genius discovered how to age backward and become young again. Nature's ultimate life hack right here.\nWhich animal superpower would you choose?\n#animals #immortal #jellyfish #science #nature #ocean #weirdbutrue #mindblown",
+    "discovered": "2026-03-30"
+  },
+  {
+    "id": "octopus-three-hearts",
+    "fact": "Octopuses have three hearts and blue blood due to copper-based oxygen transport.",
+    "source": "https://timesofindia.indiatimes.com/etimes/trending/10-weird-and-funny-animal-facts-that-sound-fake-but-are-completely-real/articleshow/125381246.cms",
+    "category": "animals",
+    "scores": {
+      "surprise": 4,
+      "shareability": 4,
+      "visual": 4,
+      "credibility": 4
+    },
+    "total_score": 16,
+    "visual_description": "Close-up of octopus tentacles and head showing translucent skin with visible blue blood vessels, underwater scene with deep ocean blues highlighting the alien-like anatomy.",
+    "caption_a": "🐙 Octopuses are literally aliens living in our oceans. They have THREE hearts and BLUE blood. Two hearts pump blood through their gills, the third pumps it through their body. Their blood is blue because it uses copper instead of iron to carry oxygen. They're basically underwater cyborgs.\nWhat's the weirdest animal fact you know?\n#octopus #ocean #animals #blue #hearts #aliens #science #weirdnature",
+    "caption_b": "💙 Three hearts, blue blood, and eight arms. Octopuses are nature's most extra creatures. Their triple-heart system and copper-based blue blood help them survive in deep, cold waters where oxygen is scarce. These aren't just smart animals—they're basically sea aliens.\nWhich ocean creature amazes you most?\n#animals #octopus #ocean #nature #science #blue #hearts #facts",
+    "discovered": "2026-03-30"
+  },
+  {
+    "id": "axolotl-regeneration",
+    "fact": "Axolotls can regrow almost any part of their body including limbs, spinal cord, eyes, and even brain tissue.",
+    "source": "https://timesofindia.indiatimes.com/etimes/trending/10-weird-and-funny-animal-facts-that-sound-fake-but-are-completely-real/articleshow/125381246.cms",
+    "category": "animals",
+    "scores": {
+      "surprise": 4,
+      "shareability": 4,
+      "visual": 4,
+      "credibility": 4
+    },
+    "total_score": 16,
+    "visual_description": "Pink axolotl in aquarium with clear water showing its regenerating limb or tail, bright lighting highlighting the unique salamander features and regeneration process in action.",
+    "caption_a": "🦎 Axolotls can regrow ANYTHING. Lost a limb? No problem. Damaged spinal cord? They'll fix it. Eye injury? They'll grow a new one. Brain damage? They can even regenerate brain tissue. Scientists study them obsessively trying to understand how they're basically real-life Wolverines.\nWhat body part would you want to regenerate?\n#axolotl #regeneration #salamander #science #wolverine #healing #animals #mindblown",
+    "caption_b": "🔬 Meet nature's ultimate healer: the axolotl. These Mexican salamanders can regrow entire limbs, repair their spinal cord, replace their eyes, and even regenerate parts of their BRAIN. All without scarring. They're living medical miracles that scientists study to help humans heal better.\nTag someone who needs to know about these healing heroes.\n#axolotl #science #regeneration #healing #animals #mexico #medical #nature",
+    "discovered": "2026-03-30"
+  },
+  {
+    "id": "french-dip-los-angeles",
+    "fact": "The French dip sandwich was invented in Los Angeles, not France, when a chef accidentally dropped a roll into roasting pan juices.",
+    "source": "https://www.rd.com/list/surprising-birthplace-of-favorite-foods-and-drinks/",
+    "category": "food",
+    "scores": {
+      "surprise": 3,
+      "shareability": 4,
+      "visual": 4,
+      "credibility": 5
+    },
+    "total_score": 16,
+    "visual_description": "Classic 1918 downtown Los Angeles diner scene with French dip sandwich and au jus, vintage Philippe's or Cole's restaurant atmosphere, old LA city backdrop.",
+    "caption_a": "🥪 The French dip sandwich has zero connection to France. It was invented in 1918 Los Angeles when Philippe Mathieu accidentally dropped a customer's roast beef roll into the roasting pan juices. The customer ate it anyway, loved it, and brought friends. Pure LA accident became a classic American sandwich.\nWhat's your favorite \"accidental\" food creation?\n#frenchdip #losangeles #food #accident #philippe #sandwich #foodfacts #history",
+    "caption_b": "🇺🇸 LA strikes again: the \"French\" dip sandwich is 100% American. A clumsy moment at Philippe's in downtown LA created what became a deli staple. The French part? Just marketing. This sandwich is as LA as traffic jams and palm trees.\nWhich sandwich defines your city?\n#food #losangeles #frenchdip #american #sandwich #foodfacts #downtown #weirdbutrue",
+    "discovered": "2026-03-30"
+  },
+  {
+    "id": "japan-waistline-law",
+    "fact": "Japan has a law requiring citizens to maintain specific waistline measurements as part of a national health initiative.",
+    "source": "https://boland-injury-law.com/blog/weird-and-wacky-laws-10-bizarre-legal-regulations-from-around-the-world/",
+    "category": "laws",
+    "scores": {
+      "surprise": 4,
+      "shareability": 5,
+      "visual": 3,
+      "credibility": 4
+    },
+    "total_score": 16,
+    "visual_description": "Japanese health clinic or government office with measuring tape and health screening setup, clean modern Japanese medical setting emphasizing national wellness programs.",
+    "caption_a": "📏 Japan literally measures its citizens' waistlines by LAW. The \"obesity law\" requires people to maintain specific measurements to combat rising health issues. It's not just a suggestion—it's legally mandated wellness. Only in Japan would the government have official waist size requirements.\nHow would you feel about government health check-ins?\n#japan #law #health #waistline #obesity #government #wellness #mindblown",
+    "caption_b": "🇯🇵 Japan said \"we're going to legally measure everyone's waist.\" Their national obesity law requires citizens to maintain specific waistline measurements. This isn't a health suggestion—it's actual legislation. Peak Japanese efficiency applied to public health.\nWhich country has the most unique laws?\n#japan #laws #health #waistline #government #unique #culture #weirdbutrue",
+    "discovered": "2026-03-30"
+  },
+  {
+    "id": "bloody-mary-new-york",
+    "fact": "The Bloody Mary cocktail was perfected in New York City at the St. Regis Hotel, not in Russia.",
+    "source": "https://www.rd.com/list/surprising-birthplace-of-favorite-foods-and-drinks/",
+    "category": "food",
+    "scores": {
+      "surprise": 3,
+      "shareability": 3,
+      "visual": 4,
+      "credibility": 5
+    },
+    "total_score": 15,
+    "visual_description": "Classic 1930s St. Regis King Cole Bar with elegant Bloody Mary cocktail, vintage New York hotel luxury, bartender Fernand Petiot creating the perfect mix with garnishes.",
+    "caption_a": "🍹 The Bloody Mary wasn't perfected in Russia—it was born at the St. Regis Hotel in NYC. Bartender Fernand Petiot brought a basic vodka-tomato recipe from Paris, then added salt, pepper, lemon, and Worcestershire in 1934. The fancy hotel called it \"Red Snapper\" because \"Bloody Mary\" was too crude.\nWhat's your go-to brunch cocktail?\n#bloodymary #newyork #stregis #cocktail #brunch #bartender #vodka #nyc",
+    "caption_b": "🗽 NYC strikes again: the Bloody Mary was perfected in Manhattan, not Moscow. The St. Regis Hotel's bartender took a basic Russian recipe and turned it into the ultimate brunch cocktail we know today. Classic New York improvement on an import.\nTag your brunch buddy who needs to know this.\n#cocktail #bloodymary #newyork #brunch #stregis #manhattan #vodka #facts",
+    "discovered": "2026-03-30"
   }
 ]
