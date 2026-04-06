@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-13T03:09:50Z",
+  "timestamp": "2026-04-06T16:04:34Z",
   "queries_run": [
     "site:reddit.com/r/todayilearned OR site:reddit.com/r/Damnthatsinteresting weird surprising fact verified",
     "strange geography border city building world record bizarre verified news",
@@ -7,49 +7,56 @@
     "law tradition rule country absurd real official",
     "science discovery sounds like science fiction study journal",
     "engineering architecture building impossible defies logic real",
-    "food fact origin history surprising common everyday item"
+    "food fact origin history surprising common everyday item",
+    "breakfast burrito invented Tia Sophia santa fe new mexico 1975",
+    "seahorse male pregnancy babies biology facts verified study",
+    "immortal jellyfish turritopsis dohrnii reverse aging benjamin button"
   ],
-  "candidates_evaluated": 12,
+  "candidates_evaluated": 15,
   "approved": [
     {
-      "id": "wombat-cubes",
-      "fact": "Wombats produce cube-shaped feces that don't roll away from their scent-marked territories.",
+      "id": "seahorse-male-pregnancy",
+      "fact": "Male seahorses are the only males in the animal kingdom that get pregnant and give birth to their babies.",
+      "total_score": 20
+    },
+    {
+      "id": "immortal-jellyfish-reverse-age",
+      "fact": "The immortal jellyfish can reverse its aging process from adult back to baby stage, essentially living forever.",
       "total_score": 19
     },
     {
-      "id": "mantis-punch",
-      "fact": "Mantis shrimp punch so fast it creates collapsing water bubbles that emit light energy.",
-      "total_score": 19
+      "id": "sharks-before-trees-timeline",
+      "fact": "Sharks existed on Earth hundreds of millions of years before trees evolved.",
+      "total_score": 17
     },
     {
-      "id": "croissants-austria",
-      "fact": "Croissants, iconic to French baking culture, were actually invented in Vienna, Austria.",
-      "total_score": 19
+      "id": "caesar-salad-tijuana-mexico",
+      "fact": "Caesar salad was invented in Tijuana, Mexico in 1924 by Italian-American restaurateur Caesar Cardini.",
+      "total_score": 17
     },
     {
-      "id": "fish-chips-portugal",
-      "fact": "Fish and chips, quintessentially British, actually originated in Portugal.",
-      "total_score": 19
+      "id": "breakfast-burrito-santa-fe",
+      "fact": "The breakfast burrito was invented in 1975 at Tia Sophia's restaurant in Santa Fe, New Mexico, not Mexico.",
+      "total_score": 15
     },
     {
-      "id": "platypus-uv",
-      "fact": "Platypuses glow blue-green under UV light due to biofluorescence in their fur.",
-      "total_score": 18
-    },
-    {
-      "id": "corned-beef-ny",
-      "fact": "Corned beef and cabbage, associated with Ireland, was invented in New York by Irish immigrants.",
-      "total_score": 18
+      "id": "martini-knickerbocker-rockefeller",
+      "fact": "The first martini cocktail was created at New York's Knickerbocker Hotel specifically for John D. Rockefeller.",
+      "total_score": 14
     }
   ],
   "rejected": [
     {
-      "fact": "Eraclea, Italy has a law banning the building of sandcastles on beaches",
-      "reason": "Scored only 13/20 - low surprise factor, feels like a minor local regulation not genuinely shocking"
+      "fact": "Switzerland enforces no toilet flushing after 10 PM in apartments",
+      "reason": "Low shareability and visual potential, too niche"
     },
     {
-      "fact": "Singapore bans the sale and consumption of chewing gum for public cleanliness",
-      "reason": "Scored 16/20 - close call but this is widely known and already viral on social media"
+      "fact": "Greece prohibits high heels at ancient monuments",
+      "reason": "Not surprising enough, feels logical rather than shocking"
+    },
+    {
+      "fact": "Octopuses have three hearts and blue blood",
+      "reason": "Similar to existing animal facts already queued"
     }
   ]
 }
